@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoffeeShop.Models;
+using CoffeeShop.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,8 +30,8 @@ namespace CoffeeShop.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var variety = _coffeeRepository.Get(id);
-            if (variety == null)
+            var coffee = _coffeeRepository.Get(id);
+            if (coffee == null)
             {
                 return NotFound();
             }
